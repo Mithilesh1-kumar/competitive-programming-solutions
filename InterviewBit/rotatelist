@@ -1,0 +1,37 @@
+class Solution:
+    # @param A : head node of linked list
+    # @param B : integer
+    # @return the head node in the linked list
+    def rotateRight(self, A, B):
+        curr=A
+        temp=A
+        prev=A
+        node=None
+        z=0
+        while curr!=None:
+            z=z+1
+            curr=curr.next
+        if B>z:
+            B=B%z
+        if B==0:
+            return A
+        if B==1 and z==1:
+            return A
+        r=z-B-1
+     
+        while r>0:
+            temp=temp.next
+            prev=prev.next
+            r=r-1
+        #temp.next=node
+        prev=prev.next
+        curr2=prev
+        
+        prev2=prev
+        while curr2!=None:
+            
+            prev2=curr2
+            curr2=curr2.next
+        
+        prev2.next=A
+        temp.next=curr2
